@@ -1,6 +1,12 @@
 <?php
 include('../config/include.php');
 include(asset('controller/controller.php'));
+
+$facilities = getFacilities();
+
+if (isset($_GET['delete'])) {
+    deleteFacility($_GET['delete']);
+}
 ?>
 <html lang="en">
 
@@ -36,19 +42,21 @@ include(asset('controller/controller.php'));
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Badminton Court</td>
-                        <td>Court</td>
-                        <td>8</td>
-                        <td>
-                            <img src="<?= route('img/depanpsm.jpg') ?>" width="100">
-                        </td>
-                        <td>
-                            <a href="<?= route('admin/facility-edit.php') ?>" class="btn btn-primary">Edit</a>
-                            <a href="#" class="btn btn-danger">Delete</a>
-                        </td>
-                    </tr>
+                    <?php foreach ($facilities as $facility) { ?>
+                        <tr>
+                            <th scope="row"><?= $facility['id'] ?></th>
+                            <td><?= $facility['name'] ?></td>
+                            <td><?= $facility['type'] ?></td>
+                            <td><?= $facility['capacity'] ?></td>
+                            <td>
+                                <img src="<?= route($facility['image']) ?>" width="100">
+                            </td>
+                            <td>
+                                <a href="<?= route('admin/facility-edit.php?facility_id=' . $facility['id']) ?>" class="btn btn-primary">Edit</a>
+                                <a href="<?= route('admin/facility.php?delete=' . $facility['id']) ?>" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    <?php } ?>
                 </tbody>
             </table>
         </main>

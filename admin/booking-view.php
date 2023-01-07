@@ -2,8 +2,17 @@
 include('../config/include.php');
 include(asset('controller/controller.php'));
 include(asset('Calendar.php'));
-$calendar = new Calendar('2023-01-03');
-$calendar->add_event("Booked", '2023-01-05');
+
+if (isset($_GET['facility_id'])) {
+    $facility = getOneFacility($_GET['facility_id']);
+    $calendar = new Calendar($facility['calendar']['today']);
+
+    if (isset($facility['bookedDate'])) {
+        foreach ($facility['bookedDate'] as $bookedDate) {
+            $calendar->add_event("Booked", $bookedDate);
+        }
+    }
+}
 ?>
 <html lang="en">
 
@@ -31,22 +40,14 @@ $calendar->add_event("Booked", '2023-01-05');
 
                 <div class="row mb-2">
                     <div class="col col-auto">
-                        <img src="<?= route('img/depanpsm.jpg') ?>" width="300" alt="">
+                        <img src="<?= route($facility['facility']['image']) ?>" width="300" alt="">
                     </div>
                     <div class="col">
-                        <h2>Badminton Court</h2>
-                        <p>Capacity: 8</p>
-                        <p>Type: Court</p>
+                        <h2><?= $facility['facility']['name'] ?></h2>
+                        <p>Capacity: <?= $facility['facility']['capacity'] ?></p>
+                        <p>Type: <?= $facility['facility']['type'] ?></p>
                     </div>
                 </div>
-
-                <form>
-                    <div class="form-group mb-2">
-                        <label for="date">Date</label>
-                        <input type="date" class="form-control" id="date">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Book</button>
-                </form>
             </div>
 
             <?= $calendar; ?>

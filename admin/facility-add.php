@@ -1,6 +1,11 @@
 <?php
 include('../config/include.php');
 include(asset('controller/controller.php'));
+
+if (isset($_POST['submit'])) {
+    $_POST['image'] = $_FILES['image'];
+    addFacility($_POST);
+}
 ?>
 <html lang="en">
 
@@ -25,7 +30,7 @@ include(asset('controller/controller.php'));
                 <a href="<?= route('admin/facility.php') ?>" class="btn btn-secondary">Back</a>
             </div>
             <div class="border p-2">
-                <form>
+                <form method="post" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label class="form-label">Name</label>
                         <input type="text" name="name" class="form-control" required>

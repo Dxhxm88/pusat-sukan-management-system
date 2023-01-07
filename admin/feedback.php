@@ -1,6 +1,8 @@
 <?php
 include('../config/include.php');
 include(asset('controller/controller.php'));
+
+$feedbacks = getFeedbacks();
 ?>
 <html lang="en">
 
@@ -32,15 +34,17 @@ include(asset('controller/controller.php'));
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Ali Bin Abu</td>
-                        <td>ali@gmail.com</td>
-                        <td>0123564987</td>
-                        <td>
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. tore reprehenderit aliquid vero ipsum sunt eum. Eligendi, quia corrupti. Doloribus?
-                        </td>
-                    </tr>
+                    <?php foreach ($feedbacks as $feedback) { ?>
+                        <tr>
+                            <th scope="row"><?= $feedback['feedback_id'] ?></th>
+                            <td><?= $feedback['name'] ?></td>
+                            <td><?= $feedback['email'] ?></td>
+                            <td><?= $feedback['phone'] ?></td>
+                            <td>
+                            <?= $feedback['message'] ?>
+                            </td>
+                        </tr>
+                    <?php } ?>
                 </tbody>
             </table>
         </main>

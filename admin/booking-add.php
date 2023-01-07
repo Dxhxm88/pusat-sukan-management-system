@@ -1,6 +1,8 @@
 <?php
 include('../config/include.php');
 include(asset('controller/controller.php'));
+
+$facilities = getFacilities();
 ?>
 <html lang="en">
 
@@ -26,56 +28,18 @@ include(asset('controller/controller.php'));
             </div>
             <div class="border p-2">
             <div class="row justify-content-center text-center">
-                <div class="col mx-auto m-4">
-                    <div class="card" style="width: 18rem;">
-                        <img src="<?= route('img/depanpsm.jpg') ?>" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Badminton Court</h5>
-                            <p class="card-text">Capacity: 8, Type: Court</p>
-                            <a href="<?= route('admin/booking-view.php') ?>" class="btn btn-primary">Book Now</a>
+            <?php foreach ($facilities as $facility) { ?>
+                    <div class="col mx-auto m-4">
+                        <div class="card" style="width: 18rem;">
+                            <img src="<?= route($facility['image']) ?>" width="100" height="200px" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title"><?= $facility['name'] ?></h5>
+                                <p class="card-text">Capacity: <?= $facility['capacity'] ?>, Type: <?= $facility['type'] ?></p>
+                                <a href="<?= route('admin/booking-view.php?facility_id=' . $facility['id'] ) ?>" class="btn btn-primary">View</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col mx-auto m-4">
-                    <div class="card" style="width: 18rem;">
-                        <img src="<?= route('img/depanpsm.jpg') ?>" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Futsal Court</h5>
-                            <p class="card-text">Capacity: 8, Type: Court</p>
-                            <a href="book.php" class="btn btn-primary">Book Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col mx-auto m-4">
-                    <div class="card" style="width: 18rem;">
-                        <img src="<?= route('img/depanpsm.jpg') ?>" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Gym</h5>
-                            <p class="card-text">Capacity: 8, Type: Court</p>
-                            <a href="book.php" class="btn btn-primary">Book Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col mx-auto m-4">
-                    <div class="card" style="width: 18rem;">
-                        <img src="<?= route('img/depanpsm.jpg') ?>" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Gym</h5>
-                            <p class="card-text">Capacity: 8, Type: Court</p>
-                            <a href="book.php" class="btn btn-primary">Book Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col mx-auto m-4">
-                    <div class="card" style="width: 18rem;">
-                        <img src="<?= route('img/depanpsm.jpg') ?>" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Gym</h5>
-                            <p class="card-text">Capacity: 8, Type: Court</p>
-                            <a href="book.php" class="btn btn-primary">Book Now</a>
-                        </div>
-                    </div>
-                </div>
+                <?php } ?>
             </div>
             </div>
         </main>

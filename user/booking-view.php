@@ -8,8 +8,10 @@ if (isset($_GET['facility_id'])) {
     $facility = getOneFacility($_GET['facility_id']);
     $calendar = new Calendar($facility['calendar']['today']);
 
-    foreach ($facility['bookedDate'] as $bookedDate) {
-        $calendar->add_event("Booked", $bookedDate);
+    if (isset($facility['bookedDate'])) {
+        foreach ($facility['bookedDate'] as $bookedDate) {
+            $calendar->add_event("Booked", $bookedDate);
+        }
     }
 }
 
@@ -43,7 +45,7 @@ if (isset($_POST['submit'])) {
 
                 <div class="row mb-2">
                     <div class="col col-auto">
-                        <img src="<?= route('img/depanpsm.jpg') ?>" width="300" alt="">
+                        <img src="<?= route($facility['facility']['image']) ?>" width="300" alt="">
                     </div>
                     <div class="col">
                         <h2><?= $facility['facility']['name'] ?></h2>

@@ -1,6 +1,12 @@
 <?php
 include('../config/include.php');
 include(asset('controller/controller.php'));
+
+$user = getUser($_GET['user_id']);
+
+if (isset($_POST['submit'])) {
+    updateUser($_POST, $_GET['user_id']);
+}
 ?>
 <html lang="en">
 
@@ -25,22 +31,22 @@ include(asset('controller/controller.php'));
                 <a href="<?= route('admin/users.php') ?>" class="btn btn-secondary">Back</a>
             </div>
             <div class="border p-2">
-                <form>
+                <form method="post">
                     <div class="mb-3">
                         <label class="form-label">Name</label>
-                        <input type="text" name="name" class="form-control" required>
+                        <input type="text" name="name" value="<?= $user['name'] ?>" class="form-control" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Email</label>
-                        <input type="text" name="email" class="form-control" required>
+                        <input type="text" name="email" value="<?= $user['email'] ?>"  class="form-control" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Maxtrix Id</label>
-                        <input type="number" name="matrix" class="form-control" required>
+                        <input type="text" name="matrix" value="<?= $user['matrix'] ?>"  class="form-control" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Phone</label>
-                        <input type="number" name="phone" class="form-control" required>
+                        <input type="text" name="phone" value="<?= $user['phone'] ?>"  class="form-control" required>
                     </div>
                     <button type="submit" name="submit" class="btn btn-primary">Update</button>
                 </form>

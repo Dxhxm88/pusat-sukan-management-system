@@ -32,7 +32,7 @@ $facilities = getFacility();
                 <?php foreach ($facilities as $facility) { ?>
                     <div class="col mx-auto m-4">
                         <div class="card" style="width: 18rem;">
-                            <img src="<?= route($facility['image']) ?>" class="card-img-top" alt="...">
+                            <img src="<?= route($facility['image']) ?>"  width="100" height="200px" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title"><?= $facility['name'] ?></h5>
                                 <p class="card-text">Capacity: <?= $facility['capacity'] ?>, Type: <?= $facility['type'] ?></p>

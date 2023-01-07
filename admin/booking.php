@@ -1,6 +1,12 @@
 <?php
 include('../config/include.php');
 include(asset('controller/controller.php'));
+
+$bookings = getBookings();
+
+if (isset($_GET['delete'])) {
+    deleteBooking($_GET['delete']);
+}
 ?>
 <html lang="en">
 
@@ -22,7 +28,7 @@ include(asset('controller/controller.php'));
             <h1 class="display-4 fw-normal border-bottom">Booking</h1>
 
             <div class="mb-3 mt-3">
-                <a href="<?= route('admin/booking-add.php') ?>" class="btn btn-primary">Booking Facility</a>
+                <a href="<?= route('admin/booking-add.php') ?>" class="btn btn-primary">Facility</a>
             </div>
             <table class="table table-bordered">
                 <thead>
@@ -33,17 +39,23 @@ include(asset('controller/controller.php'));
                         <th scope="col">Booker's Phone</th>
                         <th scope="col">Details</th>
                         <th scope="col">Date</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Badminton Court</td>
-                        <td>Ali Bin Abu</td>
-                        <td>0123654789</td>
-                        <td>Badminton Tournament</td>
-                        <td>20/12/2022</td>
-                    </tr>
+                    <?php foreach ($bookings as $booking) { ?>
+                        <tr>
+                            <th scope="row"><?= $booking['id'] ?></th>
+                            <td><?= $booking['facility_name'] ?></td>
+                            <td><?= $booking['user_name'] ?></td>
+                            <td><?= $booking['phone'] ?></td>
+                            <td><?= $booking['detail'] ?></td>
+                            <td><?= $booking['date'] ?></td>
+                            <td>
+                                <a href="<?= route('admin/booking.php?delete=' . $booking['id']) ?>" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    <?php } ?>
                 </tbody>
             </table>
         </main>

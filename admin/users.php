@@ -1,6 +1,12 @@
 <?php
 include('../config/include.php');
 include(asset('controller/controller.php'));
+
+$users = getUsers();
+
+if (isset($_GET['delete'])) {
+    deleteUser($_GET['delete']);
+}
 ?>
 <html lang="en">
 
@@ -36,17 +42,19 @@ include(asset('controller/controller.php'));
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Ali Bin Abu</td>
-                        <td>ali@gmail.com</td>
-                        <td>D123456</td>
-                        <td>0123564987</td>
-                        <td>
-                            <a href="<?= route('admin/users-edit.php') ?>" class="btn btn-primary">Edit</a>
-                            <a href="#" class="btn btn-danger">Delete</a>
-                        </td>
-                    </tr>
+                    <?php foreach ($users as $user) { ?>
+                        <tr>
+                            <th scope="row"><?= $user['id'] ?></th>
+                            <td><?= $user['name'] ?></td>
+                            <td><?= $user['email'] ?></td>
+                            <td><?= $user['matrix'] ?></td>
+                            <td><?= $user['phone'] ?></td>
+                            <td>
+                                <a href="<?= route('admin/users-edit.php?user_id=' . $user['id']) ?>" class="btn btn-primary">Edit</a>
+                                <a href="<?= route('admin/users.php?delete=' . $user['id']) ?>" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    <?php } ?>
                 </tbody>
             </table>
         </main>
