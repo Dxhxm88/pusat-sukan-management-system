@@ -47,15 +47,15 @@
                                     <input class="form-control" type="text" placeholder="Full Name" name="fullname" class="contact-in-input" required>
                                 </div>
                                 <div class="mb-2">
-                                    <label class="form-label">Full Name</label>
+                                    <label class="form-label">Email</label>
                                     <input class="form-control" type="text" placeholder="Email" name="email" class="contact-in-input" required>
                                 </div>
                                 <div class="mb-2">
-                                    <label class="form-label">Full Name</label>
+                                    <label class="form-label">Subject</label>
                                     <input class="form-control" type="text" placeholder="Subject" name="subject" class="contact-in-input" required>
                                 </div>
                                 <div class="mb-2">
-                                    <label class="form-label">Full Name</label>
+                                    <label class="form-label">Message</label>
                                     <textarea class="form-control" placeholder="Message" name="message" class="contact-in-textarea" required></textarea>
                                 </div>
                                 <input type="submit" value="SUBMIT" class="btn btn-primary" a href="login.php">

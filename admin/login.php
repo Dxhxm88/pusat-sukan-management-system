@@ -1,3 +1,13 @@
+<?php 
+include('../config/include.php');
+
+include(asset('controller/controller.php'));
+
+if (isset($_POST['submit'])) {
+    login($_POST);
+}
+
+?>
 <html lang="en">
 
 <head>
@@ -17,18 +27,18 @@
 
         <main>
             <div class="container w-50 border border-rounded p-3">
-                <form>
+                <form method="post">
                     <h1>Admin Login</h1>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <input type="email" class="form-control" name="email" required>
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1">
+                        <input type="password" name="password" class="form-control" required>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Login</button>
+                    <button type="submit" name="submit" class="btn btn-primary">Login</button>
                     <a href="../login.php"  class="btn btn-secondary">Back</a>
                 </form>
             </div>

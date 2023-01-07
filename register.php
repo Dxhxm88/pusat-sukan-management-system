@@ -1,5 +1,12 @@
-<html lang="en">
+<?php 
+include('config/include.php');
+include(asset('controller/user-controller.php'));
 
+if (isset($_POST['submit'])) {
+    register($_POST);
+}
+?>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,16 +23,28 @@
         <main>
             <h1>Register</h1>
             <div class="container w-50 border border-rounded p-3">
-                <form>
+                <form method="post">
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-control" name="name">
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" name="email">
                     </div>
-                    <button type="submit" class="btn btn-primary">Register</button>
+                    <div class="mb-3">
+                        <label class="form-label">Matrix Id</label>
+                        <input type="text" class="form-control" name="matrix">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Phone</label>
+                        <input type="text" class="form-control" name="phone">
+                    </div>
+                    <div class="mb-3">
+                        <label  class="form-label">Password</label>
+                        <input type="password" class="form-control" name="password">
+                    </div>
+                    <button type="submit" name="submit" class="btn btn-primary">Register</button>
                 </form>
             </div>
         </main>

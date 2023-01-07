@@ -1,6 +1,8 @@
 <?php 
 include('../config/include.php');
-require(asset('controller/controller.php'));
+require(asset('/config/redirect.php'));
+
+require(asset('controller/user-controller.php'));
 
 if (isset($_GET['logout'])) {
     logout();
@@ -17,32 +19,28 @@ if (isset($_GET['logout'])) {
 </head>
 
 <body>
-
-
-    <div class="container py-3">
+    <div class="container">
         <?php include('inc/navbar.php') ?>
 
         <main>
-            <div class="mb-4 border-bottom">
+            <div class="mb-4">
                 <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-                    <h1 class="display-4 fw-normal">Pusat Sukan Utem</h1>
+                    <h1 class="display-4 fw-normal">Welcome <?= $_SESSION['name'] ?>, Pusat Sukan Utem</h1>
                     <p class="fs-5 text-muted">Sukan peneraju negara</p>
-                    <a href="#" class="btn btn-primary">Register Now</a>
                 </div>
             </div>
             <div class="row justify-content-center text-center">
                 <div class="col mx-auto">
                     <div class="card" style="width: 18rem;">
                         <div class="card-body">
-                            <h5 class="card-title">Badminton Court</h5>
-                            <a href="#" class="btn btn-primary">Total Booking: 1</a>
+                            <h5 class="card-title">Facility Booked</h5>
+                            <a href="#" class="btn btn-primary">Total Booking: <?= totalBooking($_SESSION['id']); ?></a>
                         </div>
                     </div>
                 </div>
             </div>
         </main>
 
-        <?php include('inc/footer.php') ?>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
