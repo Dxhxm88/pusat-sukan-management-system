@@ -39,7 +39,7 @@
                         </div>
                     </div>
                     <div class="col">
-                        <div class="contact-in">
+                        <!-- <div class="contact-in">
                             <h1>Send a Message</h1>
                             <form id="form" name="form" method="post" class="border p-2">
                                 <div class="mb-2">
@@ -61,7 +61,7 @@
                                 <input type="submit" value="SUBMIT" class="btn btn-primary" a href="login.php">
             
                             </form>
-                        </div>
+                        </div> -->
                         <div class="contact-in">
                             <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15946.225455431411!2d102.3206242!3d2.3170198!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xf9052c1799ddf0a1!2sSports%20Complex%20-%20University%20Technical%20Malaysia%20Melaka!5e0!3m2!1sen!2smy!4v1671308252451!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             
