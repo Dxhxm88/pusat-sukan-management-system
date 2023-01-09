@@ -26,7 +26,6 @@ function login($data)
 
     if (mysqli_num_rows($result) > 0 && password_verify($password, $row['password'])) {
 
-        $row = mysqli_fetch_assoc($result);
 
         $name = $row['name'];
         // User exists, log in
