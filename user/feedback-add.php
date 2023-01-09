@@ -24,7 +24,7 @@ if (isset($_POST['submit'])) {
         </header>
 
         <main>
-            <h1 class="display-4 fw-normal border-bottom">Add Facility</h1>
+            <h1 class="display-4 fw-normal border-bottom">Add Feedback</h1>
 
             <div class="mb-3 mt-3">
                 <a href="<?= route('user/feedback.php') ?>" class="btn btn-secondary">Back</a>
