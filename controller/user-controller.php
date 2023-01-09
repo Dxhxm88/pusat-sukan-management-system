@@ -20,11 +20,11 @@ function login($data)
 {
     $email = $data['email'];
     $password = $data['password'];
-    $query = "SELECT * FROM users WHERE email='$email' AND password='$password'";
-
+    $query = "SELECT * FROM users WHERE email='$email'";
     $result = mysqlj($query);
+    $row = mysqli_fetch_assoc($result);
 
-    if (mysqli_num_rows($result) > 0) {
+    if (mysqli_num_rows($result) > 0 && password_verify($password, $row['password'])) {
 
         $row = mysqli_fetch_assoc($result);
 
@@ -54,7 +54,7 @@ function register($data)
     $matrix = $data['matrix'];
     $phone = $data['phone'];
     $email = $data['email'];
-    $password = $data['password'];
+    $password = password_hash($data['password'], PASSWORD_DEFAULT);
 
     $query = "INSERT INTO users (name,matrix,phone,email,password) VALUES ('$name', '$matrix', '$phone', '$email', '$password')";
     $result = mysqlj($query);
